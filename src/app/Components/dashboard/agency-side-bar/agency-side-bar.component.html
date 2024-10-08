@@ -1,0 +1,45 @@
+<div class="dashboard-container">
+
+  <div class="agent-side-bar">
+    <div class="links">
+      <ul>
+        <li>
+          <i class="fa-solid fa-city"></i>
+          <a routerLink="/dashboard/propertiesForAgency">Properties</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-circle-plus"></i>
+          <a routerLink="/dashboard/addProperty">Add Property</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-clipboard-list"></i>
+          <a routerLink="/dashboard/membership">Membership</a>
+        </li>
+     
+        <li>
+            <i class="fa-solid fa-user-group"></i>
+            <a routerLink="/dashboard/AgentsForAgency">Agents</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-chevron-right"></i>
+              <a routerLink="/dashboard/addAgent">Add Agent</a>
+        </li>
+      
+  
+        <li>
+          <i class="fa-regular fa-circle-user"></i>
+          <a routerLink="/dashboard/profile">My Profile</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <a routerLink="/" (click)="onLogout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-content">
+    sssssssssssssssssssss
+    <router-outlet></router-outlet>
+  </div>
+  </div>
+  

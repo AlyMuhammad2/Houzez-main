@@ -1,0 +1,107 @@
+/* General container styling for the subscription plans */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.subscription-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+  background-color: #f0f2f5;
+}
+
+/* Card styling for each subscription plan */
+.subscription-card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 320px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subscription-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the plan name */
+.subscription-card h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Pricing styling */
+.price {
+  font-size: 48px;
+  color: #007bff;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+/* Duration text */
+.subscription-card p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* List styling for plan features */
+.subscription-card ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.subscription-card li {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscription-card li::before {
+  content: '✔️';
+  color: #007bff;
+  margin-right: 10px;
+}
+
+/* Button styling */
+.subscription-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscription-card button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .subscription-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subscription-card {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}

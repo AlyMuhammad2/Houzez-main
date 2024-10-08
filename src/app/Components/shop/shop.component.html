@@ -1,0 +1,78 @@
+<app-header></app-header>
+<div class="header" style="background-color: #00335A; height: 90px;"></div>
+<div class="properties" style="background-color: #f7f8f9;">
+  <div class="container">
+    <div *ngFor="let property of Properties">
+      <div *ngIf="property.ProductType === 'shop'" class="prop-box">
+        <div class="img">
+          <img src="/images/img.jpg" alt="">
+          <div class="text">
+            <div class="price">
+              <span class="prop-price">${{property.price}}</span>
+              <span class="area">$900/Sq Pt</span>
+            </div>
+            <div class="icons">
+              <div class="icon">
+                <span>Preview</span>
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main-text">
+          <h3>New Apartment</h3>
+          <p>6701 South Dixie Highway, Miami, FL, USA</p>
+          <div class="icons">
+            <span class="bed">
+              <img src="/images/bed.png" alt="">
+              <span>1</span>
+            </span>
+            <span class="bath">
+              <img src="/images/bath.png" alt="">
+              <span>2</span>
+            </span>
+            <span class="car">
+              <img src="/images/car.png" alt="">
+              <span>3</span>
+            </span>
+            <span class="area">
+              <img src="/images/triangular-ruler.png" alt="">
+              <span>
+                <h3>1987</h3>
+                <span>sqft</span>
+              </span>
+            </span>
+          </div>
+          <div class="details">
+            <div class="type">
+              Apartment
+            </div>
+            <div class="details">
+              <a routerLink="/property/{{property.id}}">Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="user-details">
+          <div class="user">
+            <i class="fa-regular fa-user"></i>
+            <a class="user-name">
+              {{property.name}}
+            </a>
+          </div>
+          <div class="date">
+            <i class="fa-solid fa-paperclip"></i>
+            <span class="years">
+              4 years ago
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="Properties.length === 0" class="no-properties">
+      <p>
+        No properties added yet
+      </p>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

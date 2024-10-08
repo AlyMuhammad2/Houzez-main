@@ -1,0 +1,45 @@
+<div class="login-container">
+  <div class="login">
+    <div class="header">
+      <ul>
+        <li class="active"><a routerLink="/">Login</a></li>
+        <li><a routerLink="/">Register</a></li>
+      </ul>
+      <div class="close">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+    </div>
+    <div class="body">
+      <form   (ngSubmit)="handelLogin(loginForm)" [formGroup]="loginForm">
+        <div class="fields-container">
+          <div>
+            <i class="fa-regular fa-user"></i>
+            <input formControlName="email" type="email" name="" id="" placeholder="Email">
+          </div>
+          <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+            <p *ngIf="loginForm.get('email')?.getError('pattern')" style="color: rgb(255, 31, 31);">
+            "Enter a valid email, e.g., example&#64;gmail.com"
+            </p>
+            <p *ngIf="loginForm.get('email')?.getError('required')" style="color: rgb(255, 31, 31);">Email is required</p>
+         </div>
+
+          <div>
+            <i class="loginIcon fa-solid fa-lock"></i>
+            <input formControlName="password" type="password" name="" id="" placeholder="Password">
+          </div>
+          <div *ngIf="loginForm.get('password')?.hasError('pattern') && loginForm.get('password')?.touched" style="color: rgb(255, 31, 31);">
+            Password must be at least 8 characters with letters and numbers.
+       </div>
+        </div>
+        <div class="remember">
+          <div>
+            <input type="checkbox" name="" id="">
+            <label for="">Remember me</label>
+          </div>
+          <a routerLink="/login">Lost your password?</a>
+        </div>
+        <input class="submit" type="submit" value="Login">
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+<!-- Start Main Header -->
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <a routerLink="/">
+        <img class="imgLogo" src="/images/logo-houzez.webp" alt="houzez logo">
+      </a>
+    </div>
+    <nav class="headerNav">
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/programs">Programs</a></li>
+        <li><a routerLink="/">Real Estate Broker</a></li>
+        <li><a routerLink="/subscription">Subscriptions</a></li>
+        <li>
+          <a routerLink="/">
+            Other
+            <i class="fa-solid fa-angle-down"></i>
+          </a>
+          <ul>
+            <li><a routerLink="/about">About</a></li>
+            <li><a routerLink="/contact">Contact Us</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="user">
+      <a routerLink="login">
+        <i class="userIc fa-regular fa-circle-user"></i>
+      </a>
+      <a class="list" routerLink="/">Create A Listing</a>
+    </div>
+  </div>
+</header>
+<!-- End Main Header -->
+<!-- Start Phone Header -->
+<!-- <nav [ngStyle]="{ 'display': isNavVisible ? 'block' : 'none' }">
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/">Programs</a></li>
+    <li><a routerLink="/">Real Estate Broker</a></li>
+    <li><a routerLink="/">Subscriptions</a></li>
+    <li>
+      <a routerLink="/">
+        Other
+        <i class="fa-solid fa-angle-down"></i>
+      </a>
+    </li>
+    <ul class="other-menu">
+      <li><a routerLink="/">About</a></li>
+      <li><a routerLink="/">Contact Us</a></li>
+    </ul>
+  </ul>
+</nav> -->
+<header class="mob-header" >
+  <nav class="mobNav" [ngStyle]="{ 'display': isNavVisible ? 'block' : 'none' }">
+    <ul>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/">Programs</a></li>
+      <li><a routerLink="/">Real Estate Broker</a></li>
+      <li><a routerLink="/">Subscriptions</a></li>
+      <li>
+        <a routerLink="/">
+          Other
+          <i class="fa-solid fa-angle-down"></i>
+        </a>
+      </li>
+      <ul class="other-menu">
+        <li><a routerLink="/">About</a></li>
+        <li><a routerLink="/">Contact Us</a></li>
+      </ul>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="menu" (click)="toggleNavVisibility()">
+      <i class="toggle-menu fa-solid fa-bars"></i>
+    </div>
+    <div class="logo">
+      <a routerLink="/">
+        <img class="imgLogo" src="/images/logo-houzez.webp" alt="houzez logo">
+      </a>
+    </div>
+    <div class="user" (click)="toggleUserMenuVisibility()">
+      <i class="userIc fa-regular fa-circle-user"></i>
+    </div>
+  </div>
+  <div class="user-menu" [ngStyle]="{ 'display': isUserMenuVisible ? 'block' : 'none' }">
+    <a class="list" routerLink="/">Create A Listing</a>
+    <a class="login" routerLink="/login">
+      <i class="loginIcon fa-solid fa-lock"></i>
+      Login
+    </a>
+  </div>
+</header>
+<!-- End Phone Header -->
+<!-- Start Login / Register Popup -->
+<div class="login-container">
+  <div class="login">
+    <app-reset-password></app-reset-password>
+    <div class="header">
+      <ul>
+        <li class="active"><a routerLink="">Login</a></li>
+        <li><a routerLink="">Register</a></li>
+      </ul>
+      <div class="close">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+    </div>
+    <div class="body">
+      <app-login></app-login>
+      <app-register></app-register>
+    </div>
+  </div>
+</div>
+<!-- End Login / Register Popup -->

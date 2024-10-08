@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="header" style="background-color: #00335A; height: 90px;"></div>
+<div>
+  <div class="container">
+    <h1>Subscription Plans</h1><br>
+    <div class="subscription-container">
+      <div *ngFor="let plan of Subscriptions" class="subscription-card">
+        <h2>{{ plan.subscriptionType }}</h2>
+        <div class="price">{{ plan.price }} EGP</div>
+        <p>Duration: {{ plan.durationMonths }} Month</p>
+
+        <p>Add up to  {{ plan.numOfAvailableAgents }} Agents</p>
+        <p>Add up to  {{ plan.numOfAvailableproducts }} Propreties </p>
+        <p>{{ plan.numOfimagesperproducts }} images per property</p>
+        <ul>
+          <li *ngFor="let feature of features">
+            <hr>{{ feature }}
+          </li>
+          <hr>
+        </ul>
+        <button (click)="gotopayment(plan.id)">Subscribe</button>
+      </div>
+    </div>   
+  </div>
+</div>
+<app-footer></app-footer>

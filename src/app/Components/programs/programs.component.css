@@ -1,0 +1,25 @@
+@media (max-width: 993px) {
+  .header {
+    display: none;
+  }
+}
+.about-section {
+  background: linear-gradient(rgba(83, 115, 197, 0.5), rgba(83, 115, 197, 0.5)), url('/images/Image/205.jpg');
+  background-size: cover;
+  background-position: center;
+  padding-top: 80px;
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 8.5%;
+  color: white;
+  font-size: 240%;
+  text-align: left;
+}
+div.program {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+

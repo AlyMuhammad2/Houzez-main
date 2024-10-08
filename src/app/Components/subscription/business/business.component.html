@@ -1,0 +1,17 @@
+<main>
+  <h1>Subscription For Businesses</h1><br>
+  <div class="subscription-container">
+    <div *ngFor="let plan of subscriptionPlans" class="subscription-card">
+      <h2>{{ plan.name }}</h2>
+      <div class="price">{{ plan.price }}</div>
+      <p>Duration: {{ plan.duration }}</p>
+      <ul>
+        <li *ngFor="let feature of plan.features">
+          <hr>{{ feature }}
+        </li>
+        <hr>
+      </ul>
+      <button>Choose Plan</button>
+    </div>
+  </div>
+</main>

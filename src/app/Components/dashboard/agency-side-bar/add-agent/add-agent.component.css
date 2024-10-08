@@ -1,0 +1,79 @@
+/* جعل الفورم في وسط الصفحة */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f4f8; /* لون خلفية خفيف */
+}
+
+form {
+  background-color: #ffffff; /* خلفية الفورم */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* تأثير الظل */
+  width: 400px;
+}
+
+h2 {
+  text-align: center;
+  color: #1e90ff; /* لون العنوان */
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333333; /* لون النص */
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc; /* حدود الحقول */
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  border-color: #1e90ff; /* تغيير لون الحدود عند التركيز */
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1e90ff; /* لون الزر */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+button:disabled {
+  background-color: grey; /* لون الزر المعطل */
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+/* تخصيص ألوان التوستر */
+.ngx-toastr.toast-success {
+  background-color: #1e90ff !important; /* خلفية زرقاء للنجاح */
+  color: white;
+}
+
+.ngx-toastr.toast-error {
+  background-color: #ff0000 !important; /* خلفية حمراء للفشل */
+  color: white;
+}

@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { subscriptionsService } from "../../Services/Subscription.service";
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-register',
@@ -72,16 +73,25 @@ export class RegisterComponent {
     this.isSubmitted=true;
     console.log(this.rgisterForm.get('accountType')?.value);
     if (this.rgisterForm.valid) {
-      
       this._AuthService.register(this.rgisterForm.value).subscribe({
         next: (response:any) => {
+          this._AuthService.storeToken(response.token);
+          const decodedToken: any = jwtDecode(response.token);
+          const userRole = decodedToken.Roles;
+          const userid=decodedToken.sub;
+          // localStorage.setItem("userid",userid);
+          // if(userRole=="Agency")
+          //   this.myrout.navigate(["/dashboard"]);
+          // else if(userRole=="Agent")
+          //   this.myrout.navigate(["/dashboard"]);
          this._AuthService.isLoggedIn=true;
             this.rgisterForm.reset();
             this.isSubmitted=false;
-            this.toastr.success("Create New"+this.rgisterForm.get("accountType"),"Registeration Successful")
-            this._AuthService.storeToken(response.token);
+            this.toastr.success("Create New"+localStorage.getItem('subtype'),"Registeration Successful")
 
-           this.subscriptionsService.OnlinePayment(Number(localStorage.getItem("subid")))
+            this.subscriptionsService.OnlinePayment(Number(localStorage.getItem("subid")))
+
+
           
         },
         error: (err) => {
@@ -91,3 +101,4 @@ export class RegisterComponent {
     }
   }
 }
+  

@@ -36,11 +36,10 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
   }
- getUserId(token:any){
-  const decodedToken: any = jwtDecode(token);
-  const userid=Number(decodedToken.sub);
-  console.log(userid);
-  return userid;
- }
+  getUserId(token:any){
+   const decodedToken: any = jwtDecode(token);
+   const userid=Number(decodedToken.sub);
+   console.log(userid);
+   return userid;
+  }
 }
-

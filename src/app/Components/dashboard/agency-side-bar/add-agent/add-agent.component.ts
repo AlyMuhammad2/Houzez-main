@@ -18,7 +18,7 @@ export class AddAgentComponent {
 
   addAgentForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private agentService: AgentService,private toastr:ToastrService , private authService : AuthService) {
+  constructor(private fb: FormBuilder, private agentService: AgentService,private toastr:ToastrService , private auth:AuthService) {
     this.addAgentForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -48,19 +48,21 @@ export class AddAgentComponent {
 
   onSubmit() {
     if (this.addAgentForm.valid) {
+      const Token = localStorage.getItem('token');
       const newAgent = this.addAgentForm.value;
-      const agencyId = Number(this.authService.getUserId(localStorage.getItem("token")));  // استبدل بـ agencyId المناسب
+      const agencyId = Number(this.auth.getUserId(Token));  // استبدل بـ agencyId المناسب
       this.agentService.addAgent(agencyId, newAgent).subscribe({
         next: (response) => {
           this.toastr.success("Create New Agent", "Registration Successful", {
-            timeOut: 1000,
+            timeOut: 5000,
             positionClass: 'toast-top-right', // لضبط التوستر على اليمين
             progressBar: true, // شريط التقدم
             closeButton: true, // زر الإغلاق
             toastClass: 'ngx-toastr toast-success', 
           });
           this.addAgentForm.reset();
-          console.log('Agent added successfully', response);
+          console.log( response);
+          
         },
         error: (error) => {
           this.toastr.error("Registration failed", "Error", {
@@ -73,6 +75,7 @@ export class AddAgentComponent {
           console.error('Error adding agent', error);
         }
       });
+      console.log(localStorage.getItem("userid"));
     }
   }
 }

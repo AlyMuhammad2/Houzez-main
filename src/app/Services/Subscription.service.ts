@@ -30,7 +30,7 @@ export class subscriptionsService {
       .pipe(
       ).subscribe({
         next:(response:any)=>{
-          
+        
         window.location.href=response.url
         },
         error: (err) => { console.log(err) },

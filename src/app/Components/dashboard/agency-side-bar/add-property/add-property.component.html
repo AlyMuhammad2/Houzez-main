@@ -1,1 +1,156 @@
-<p>add-property works!</p>
+<form [formGroup]="propertyForm" (ngSubmit)="onSubmit()" class="property-form">
+    <!-- Dropdown for Property Type -->
+    <div class="form-group">
+      <label for="propertyType">Property Type:</label>
+      <select formControlName="propertyType" id="propertyType" class="form-control">
+        <option *ngFor="let type of propertyTypes" [value]="type">{{ type }}</option>
+      </select>
+      <div *ngIf="propertyForm.get('propertyType')?.invalid && propertyForm.get('propertyType')?.touched" class="error">
+        <small>Property type is required.</small>
+      </div>
+    </div>
+  
+    <!-- Common Fields for All Properties -->
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input formControlName="title" id="title" type="text" class="form-control" />
+      <div *ngIf="propertyForm.get('title')?.invalid && propertyForm.get('title')?.touched" class="error">
+        <small>Title is required.</small>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea formControlName="description" id="description" class="form-control"></textarea>
+      <div *ngIf="propertyForm.get('description')?.invalid && propertyForm.get('description')?.touched" class="error">
+        <small>Description is required.</small>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input formControlName="price" id="price" type="number" class="form-control" />
+      <div *ngIf="propertyForm.get('price')?.invalid && propertyForm.get('price')?.touched" class="error">
+        <small>Price is required.</small>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input formControlName="location" id="location" type="text" class="form-control" />
+      <div *ngIf="propertyForm.get('location')?.invalid && propertyForm.get('location')?.touched" class="error">
+        <small>Location is required.</small>
+      </div>
+    </div>
+  
+    <!-- Villa Specific Fields -->
+    <div *ngIf="propertyForm.get('propertyType')?.value === 'Villa'" class="villa-fields">
+      <h3>Villa Specific Details</h3>
+      <div class="form-group">
+        <label for="numOfBedroom">Number of Bedrooms:</label>
+        <input formControlName="numOfBedroom" id="numOfBedroom" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="numOfBathrom">Number of Bathrooms:</label>
+        <input formControlName="numOfBathrom" id="numOfBathrom" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="numOfCars">Number of Cars:</label>
+        <input formControlName="numOfCars" id="numOfCars" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="numberOfFloors">Number of Floors:</label>
+        <input formControlName="numberOfFloors" id="numberOfFloors" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-check">
+        <input type="checkbox" formControlName="hasSwimmingPool" id="hasSwimmingPool" class="form-check-input" />
+        <label for="hasSwimmingPool" class="form-check-label">Has Swimming Pool</label>
+      </div>
+  
+      <div class="form-check">
+        <input type="checkbox" formControlName="hasGarden" id="hasGarden" class="form-check-input" />
+        <label for="hasGarden" class="form-check-label">Has Garden</label>
+      </div>
+    </div>
+  
+    <!-- House Specific Fields -->
+    <div *ngIf="propertyForm.get('propertyType')?.value === 'House'" class="house-fields">
+      <h3>House Specific Details</h3>
+      <div class="form-group">
+        <label for="numOfBedroom">Number of Bedrooms:</label>
+        <input formControlName="numOfBedroom" id="numOfBedroom" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="numOfBathrom">Number of Bathrooms:</label>
+        <input formControlName="numOfBathrom" id="numOfBathrom" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="numOfCars">Number of Cars:</label>
+        <input formControlName="numOfCars" id="numOfCars" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="numberOfRooms">Number of Rooms:</label>
+        <input formControlName="numberOfRooms" id="numberOfRooms" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-check">
+        <input type="checkbox" formControlName="hasGarage" id="hasGarage" class="form-check-input" />
+        <label for="hasGarage" class="form-check-label">Has Garage</label>
+      </div>
+  
+      <div class="form-check">
+        <input type="checkbox" formControlName="hasBackyard" id="hasBackyard" class="form-check-input" />
+        <label for="hasBackyard" class="form-check-label">Has Backyard</label>
+      </div>
+    </div>
+  
+    <!-- Apartment Specific Fields -->
+    <div *ngIf="propertyForm.get('propertyType')?.value === 'Apartment'" class="apartment-fields">
+      <h3>Apartment Specific Details</h3>
+      <div class="form-group">
+        <label for="numOfBedroom">Number of Bedrooms:</label>
+        <input formControlName="numOfBedroom" id="numOfBedroom" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="numOfBathrom">Number of Bathrooms:</label>
+        <input formControlName="numOfBathrom" id="numOfBathrom" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="numOfCars">Number of Cars:</label>
+        <input formControlName="numOfCars" id="numOfCars" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="floorNumber">Floor Number:</label>
+        <input formControlName="floorNumber" id="floorNumber" type="number" class="form-control" />
+      </div>
+  
+      <div class="form-check">
+        <input type="checkbox" formControlName="hasElevatorAccess" id="hasElevatorAccess" class="form-check-input" />
+        <label for="hasElevatorAccess" class="form-check-label">Has Elevator Access</label>
+      </div>
+    </div>
+  
+    <!-- Common Fields -->
+    <div class="form-group">
+      <label for="primaryImg">Primary Image:</label>
+      <input formControlName="primaryImg" id="primaryImg" type="text" class="form-control" />
+    </div>
+  
+    <div class="form-group">
+      <label for="images">Images:</label>
+      <input formControlName="images" id="images" type="file" multiple (change)="onFileChange($event)" class="form-control-file" />
+    </div>
+  
+    <button type="submit" [disabled]="propertyForm.invalid" class="btn btn-primary">Add Property</button>
+  </form>
+  

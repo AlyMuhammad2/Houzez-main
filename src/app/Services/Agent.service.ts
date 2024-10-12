@@ -13,6 +13,7 @@ export class AgentService {
 
   addAgent(agencyId: number, newAgent: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    console.log(agencyId)
     return this.http.post(`${this.apiUrl}${agencyId}/add-agency`, newAgent, { headers });
   }
 }

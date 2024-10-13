@@ -1,4 +1,4 @@
-export type Agency = { Id: number, AgencyName: string, OwnerName: string,OwnerEmail : string,OwnerPhone : string, SubscriptionType : string , AgentsNumber :number ,  ProductsNumber :number };
+export type Agency = { id: number, agencyName: string, ownerName: string,ownerEmail : string,ownerPhone : string, subscriptionType : string , agentsNumber :number ,  productsNumber :number };
 export type Agencies = Agency[];
 
 interface IAgency {

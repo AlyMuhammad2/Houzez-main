@@ -42,12 +42,20 @@ constructor(private _AuthService:AuthService ,private myroute:Router){
         const userid=decodedToken.sub;
         localStorage.setItem("userid",userid);
        if(userRole=="Agency")
-        this.myroute.navigate(["/dashboard"]);
+       { this.myroute.navigate(["/dashboard"]);
+        console.log(response.userid)
+        this._AuthService.SetAgencyId(response.userid);
+        //console.log(agencyid);
+       }
       else if(userRole=="Agent")
-        this.myroute.navigate(["/dashboard"]);
+        {this.myroute.navigate(["/dashboard"]);
+          this._AuthService.SetAgentId(response.userid)
+          // console.log(agentid);
+        }
       else if(userRole=="Admin")
-        this.myroute.navigate(["/dashboard"]);
+        this.myroute.navigate(["/admindashboard"]);
         },
+        
 
         error : (err)=> console.log(err)
       })

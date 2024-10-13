@@ -53,15 +53,15 @@ export class AddAgentComponent {
       const agencyId = Number(this.auth.getUserId(Token));  // استبدل بـ agencyId المناسب
       this.agentService.addAgent(agencyId, newAgent).subscribe({
         next: (response) => {
-          this.toastr.success("Create New Agent", "Registration Successful", {
-            timeOut: 5000,
+          this.toastr.success("Create New Agent\n", "Agent Email : " + response.email +" \n" + "Agent Password : "+ response.pass , {
+            timeOut: 10000,
             positionClass: 'toast-top-right', // لضبط التوستر على اليمين
             progressBar: true, // شريط التقدم
             closeButton: true, // زر الإغلاق
             toastClass: 'ngx-toastr toast-success', 
           });
           this.addAgentForm.reset();
-          console.log( response);
+          console.log(response);
           
         },
         error: (error) => {

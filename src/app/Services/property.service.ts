@@ -1,43 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApartmentRequestDto } from '../Types/ApartmentRequestDto';
+import { HouseRequestDTO } from '../Types/HouseRequestDTO';
+import { VillaRequestDTO } from '../Types/VillaRequestDTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PropertyService {
 
-  private baseUrl = 'https://localhost:44350/api';  // قاعدة URL للـ API
+  private mainUrl = 'https://localhost:44350/api/';
+  private GetPro='https://localhost:44350/api/agency/60/products';
 
-  constructor(private http: HttpClient) { }
+  private ApartmentUrl = 'https://localhost:44350/api/Apartment';  
 
-  // الدالة لإضافة فيلا
-  addVilla(villaData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/villa`, villaData, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`  // إضافة التوكين من الـ localStorage
-      })
-    });
-  }
+  private HouseUrl = 'https://localhost:44350/api/House';  
 
-  // الدالة لإضافة شقة
-  addApartment(apartmentData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/apartment`, apartmentData, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      })
-    });
-  }
+  private VillaUrl = 'https://localhost:44350/api/Villa';
 
-  // الدالة لإضافة بيت
-  addHouse(houseData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/house`, houseData, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      })
-    });
-  }
+    constructor(private http: HttpClient) {}
+  
+    addProperty(formData: FormData): Observable<any> {
+      return this.http.post(this.ApartmentUrl, formData);
+    }
+    addApartment(apartment: ApartmentRequestDto): Observable<any> {
+      return this.http.post<any>(`${this.ApartmentUrl}`, apartment);
+    }
+    addHouse(house:HouseRequestDTO):Observable<any>{
+      return this.http.post<any>(`${this.HouseUrl}`,house)
+    }
+    addVilla(villa:VillaRequestDTO):Observable<any>{
+      return this.http.post<any>(`${this.VillaUrl}`,villa)
+    }  
+    getProducts(agencyId: number):Observable<any>{
+      return this.http.get<any>(`${this.mainUrl}agency/${agencyId}/products`);
+    }
 }

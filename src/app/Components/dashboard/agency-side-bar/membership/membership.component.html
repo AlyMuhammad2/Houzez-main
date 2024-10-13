@@ -1,1 +1,24 @@
-<p>membership works!</p>
+
+  <div class="container">
+    <h1>Subscription Plan for you :</h1><br>
+    <div class="subscription-container" *ngIf="subscription">
+      <div class="subscription-card">
+        <h2>{{ subscription.subscriptionType }}</h2>
+        <div class="price">{{ subscription.price }} EGP</div>
+        <p>Duration: {{ subscription.durationMonths }} Month</p>
+
+        <p>Add up to {{ subscription.numOfAvailableAgents }} Agents</p>
+        <p>Add up to {{ subscription.numOfAvailableproducts }} Properties</p>
+        <p>{{ subscription.numOfimagesperproducts }} images per property</p>
+        <ul>
+            <li *ngFor="let feature of features">
+                <hr>{{ feature }}
+            </li>
+            <hr>
+        </ul>
+      </div>
+    </div> 
+    
+    <!-- New buttons -->
+
+  </div>

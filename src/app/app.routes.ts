@@ -30,6 +30,10 @@ import { MembershipComponent } from './Components/dashboard/agency-side-bar/memb
 import { AgentsForAgencyComponent } from './Components/dashboard/agency-side-bar/agents-for-agency/agents-for-agency.component';
 import { AddAgentComponent } from './Components/dashboard/agency-side-bar/add-agent/add-agent.component';
 import { ProfileComponent } from './Components/dashboard/agency-side-bar/profile/profile.component';
+import { AdminSideBarComponent } from './Components/dashboard/admin-side-bar/admin-side-bar.component';
+import { GetAgencyComponent } from './Components/dashboard/admin-side-bar/get-agency/get-agency.component';
+import { GetAgentComponent } from './Components/dashboard/admin-side-bar/get-agents/get-agents.component';
+import { GetSubscriptionComponent } from './Components/dashboard/admin-side-bar/get-subscription/get-subscription.component';
 export const routes: Routes = [
   { path: "", component:HomeComponent },
   { path: "Home", component:HomeComponent },
@@ -43,6 +47,16 @@ export const routes: Routes = [
       { path : 'addAgent' , component:AddAgentComponent},
       { path : 'profile/:id' , component : ProfileComponent},
       { path : '', redirectTo: 'propertiesForAgency', pathMatch: 'full' }
+    ]
+  },
+  { path: "admindashboard", 
+    component: AdminSideBarComponent,
+    children:[
+      { path : 'AllAgencies', component: GetAgencyComponent },
+      { path : 'Agents', component: GetAgentComponent },
+{ path : 'Subscriptions', component: GetSubscriptionComponent },
+
+      { path : '', redirectTo: 'AllAgencies', pathMatch: 'full' }
     ]
   },
   { path: "properties", component: PropertiesComponent },

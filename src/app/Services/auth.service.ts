@@ -10,6 +10,9 @@ export class AuthService {
  
   constructor(private _httpClint: HttpClient) { }
   public isLoggedIn: boolean = false;
+  //public agencyId: Number =this.GetAgencyId() ;
+  //public agentId: Number = this.GetAgentId() ;
+
   // userdata = null;
   // decodeUserData() {
   //   let encodedToken = JSON.stringify(localStorage.getItem('userToken'))
@@ -26,6 +29,25 @@ export class AuthService {
   }
   storeToken(token: string): void {
     localStorage.setItem('token', token);
+  }
+
+  public agencyId:number|undefined ;
+  public agentId: number | undefined;
+
+  SetAgencyId(userid: number): void {
+      this.agencyId = userid;
+  }
+
+  GetAgencyId(): number |undefined {
+      return this.agencyId;
+  }
+
+  SetAgentId(userid: number): void {
+      this.agentId = userid;
+  }
+
+  GetAgentId(): number | undefined {
+      return this.agentId;
   }
   // Retrieve the token from localStorage
   getToken(): string | null {

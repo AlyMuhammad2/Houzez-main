@@ -1,6 +1,36 @@
-<div class="properties-container">
-    <h2>Properties</h2>
+<div class="grid-container">
+    <div *ngFor="let product of products" class="product-card">
+      <div class="card">
+        <div class="card-body">
+          <!-- Product Image -->
+          <img src="/images/{{product.primaryImg}}" alt="{{ product.title }}" class="product-img" />
   
+          <!-- Product Title -->
+          <h2>{{ product.title }}</h2>
+  
+          <!-- Product Price -->
+          <p><strong>Price:</strong> {{ product.price }} EGP</p>
+  
+          <p *ngIf="product.area >= 0"><strong>Area:</strong> {{ product.area }} m²</p>
+  
+          <p><strong>Created Date:</strong> {{ product.createdDate | date: 'dd-MMM-yyyy' }}</p>
+  
+          <p><strong>For Rent:</strong> {{ product.isForRent ? 'Yes' : 'No' }}</p>
+  
+          <p><strong>Bedrooms:</strong> {{ product.numOfBedroom }}</p>
+          <p><strong>Bathrooms:</strong> {{ product.numOfBathrom }}</p>
+          <p><strong>Car Spaces:</strong> {{ product.numOfCars }}</p>
+  
+          <p><strong>Location:</strong> {{ product.location }}</p>
+  
+          <p><strong>Available:</strong> {{ product.isAvailable ? 'Yes' : 'No' }}</p>
+  
+          <p><strong>Agency Name:</strong> {{ product.agencyName }}</p>
+          <p *ngIf="product.agentName"><strong>Agent Name:</strong> {{ product.agentName }}</p>
+  
+          <p><strong>Product Type:</strong> {{ product.productType }}</p>
+        </div>
+      </div>
     </div>
-  
+  </div>
   

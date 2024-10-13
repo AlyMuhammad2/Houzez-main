@@ -1,0 +1,64 @@
+<div class="container">
+    <h2 class="my-4 text-center">Subscriptions List</h2>
+  
+    <!-- Search Bar -->
+    <div class="search-container mb-3">
+      <input type="text" class="form-control" placeholder="Search by subscription type..." [(ngModel)]="searchTerm" (input)="onSearch()">
+    </div>
+  
+    <!-- Table -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th (click)="onSort('subscriptionType')">Plan <i [ngClass]="{'fas fa-sort-up': sortColumn === 'subscriptionType' && sortDirection === 'asc', 'fas fa-sort-down': sortColumn === 'subscriptionType' && sortDirection === 'desc'}"></i></th>
+            <th (click)="onSort('agencyName')">Subscriber Name<i [ngClass]="{'fas fa-sort-up': sortColumn === 'agencyName' && sortDirection === 'asc', 'fas fa-sort-down': sortColumn === 'agencyName' && sortDirection === 'desc'}"></i></th>
+            <th (click)="onSort('agentName')">Sunscriper Type <i [ngClass]="{'fas fa-sort-up': sortColumn === 'agentName' && sortDirection === 'asc', 'fas fa-sort-down': sortColumn === 'agentName' && sortDirection === 'desc'}"></i></th>
+            <th>Start Date</th>
+            <th>Duration Months</th>
+            <th>Price</th>
+            <th>Is Active</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subscription of subscriptions; let i = index">
+            <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+            <td>{{ subscription.subscriptionType }}</td>
+            <td>{{ subscription.subscriberName }}</td>
+            <td>{{ subscription.subscriberType }}</td>
+            <td>{{ subscription.startDate | date }}</td>
+            <td>{{ subscription.durationmonth }}</td>
+
+            <td>{{ subscription.amount }} EGP</td>
+
+            <td>{{ subscription.isActive }}</td>
+
+          
+          </tr>
+          <tr *ngIf="subscriptions.length === 0">
+            <td colspan="7" class="text-center">No subscriptions found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="onPageChange(currentPage - 1)" href="javascript:void(0)">Previous</a>
+        </li>
+  
+        <li class="page-item" [class.active]="page === currentPage" *ngFor="let page of getPages()">
+          <a class="page-link" (click)="onPageChange(page)" href="javascript:void(0)">{{ page }}</a>
+        </li>
+  
+        <li class="page-item" [class.disabled]="currentPage === getTotalPages()">
+          <a class="page-link" (click)="onPageChange(currentPage + 1)" href="javascript:void(0)">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  

@@ -1,1 +1,31 @@
-<p>admin-side-bar works!</p>
+<div class="dashboard-container">
+
+    <div class="agent-side-bar">
+      <div class="links">
+        <ul>
+          <li>
+            <i class="fa-solid fa-city"></i>
+            <a routerLink="//admindashboard/AllAgencies">Agencies</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-city"></i>
+            <a routerLink="//admindashboard/Agents">Agents</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-city"></i>
+            <a routerLink="//admindashboard/Subscriptions">Subscriptions</a>
+          </li>
+          
+          <li>
+            
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <a routerLink="/" (click)="onLogout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+    </div>
+    

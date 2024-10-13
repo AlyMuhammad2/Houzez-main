@@ -1,0 +1,81 @@
+<div class="container">
+    <h2>Agents List</h2>
+  
+    <!-- Search Bar -->
+    <div class="search-container mb-3">
+      <input type="text" class="form-control" placeholder="Search by agency name..." [(ngModel)]="searchTerm" (input)="onSearch()">
+    </div>
+   <!-- Free Agents Checkbox -->
+   <div class="form-check mb-3">
+    <input 
+      type="checkbox" 
+      class="form-check-input" 
+      id="freeAgents" 
+      [(ngModel)]="isFreeAgents" 
+      (change)="onFreeAgentsToggle()"
+    />
+    <label class="form-check-label" for="freeAgents">Free Agents</label>
+  </div>
+
+    <!-- Table -->
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th (click)="onSort('name')">Agent Name <i [ngClass]="{'fas fa-sort-up': sortColumn === 'agencyName' && sortDirection === 'asc', 'fas fa-sort-down': sortColumn === 'agencyName' && sortDirection === 'desc'}"></i></th>
+          <th>Agent Email</th>
+          <th>Agent Phone</th>
+          <th>products Number</th>
+          <th>Tasks Number</th>
+          <th>subscriptionType</th>
+
+          <th (click)="onSort('agencyName')">Agency Name <i [ngClass]="{'fas fa-sort-up': sortColumn === 'ownerName' && sortDirection === 'asc', 'fas fa-sort-down': sortColumn === 'ownerName' && sortDirection === 'desc'}"></i></th>
+          <th>Created Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let agent of Agents; let i = index">
+          <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td> <!-- Row number based on page -->
+          <td>{{ agent.name }}</td>
+          <td>{{ agent.email }}</td>
+          <td>{{ agent.phoneNumber}}</td>
+          <td>{{ agent.productsNumber }}</td>
+          <td>{{ agent.tasksNumber }}</td>
+          <td>{{ agent.subscriptionType ?? 'Agency Member' }}</td>
+          <td>{{ agent.agencyName ?? 'No Agency' }}</td>
+          <td>{{ agent.createdDate | date: 'dd/MM/yyyy' }}</td>
+                    <td>
+            <button class="btn btn-warning btn-sm" (click)="openModal(agent.id)">View Products</button>
+            <button class="btn btn-danger btn-sm" (click)="onDelete(agent.id)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="Agents.length === 0">
+          <td colspan="9" class="text-center">No agencies found</td>
+        </tr>
+      </tbody>
+    </table>
+    <app-products 
+    [show]="isModalVisible" 
+    [agentid]="selectedAgentId" 
+    (close)="closeModal()">
+  </app-products>
+
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="onPageChange(currentPage - 1)" href="javascript:void(0)">Previous</a>
+        </li>
+  
+        <li class="page-item" [class.active]="page === currentPage" *ngFor="let page of getPages()">
+          <a class="page-link" (click)="onPageChange(page)" href="javascript:void(0)">{{ page }}</a>
+        </li>
+  
+        <li class="page-item" [class.disabled]="currentPage === getTotalPages()">
+          <a class="page-link" (click)="onPageChange(currentPage + 1)" href="javascript:void(0)">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  
